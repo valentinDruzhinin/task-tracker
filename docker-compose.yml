@@ -22,5 +22,3 @@ services:
     - POSTGRES_USER=admin
     - POSTGRES_PASSWORD=mypassword
     - POSTGRES_DB=task_tracker
-volumes:
-  pgdata:
