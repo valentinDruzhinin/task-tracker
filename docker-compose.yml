@@ -12,12 +12,12 @@ services:
     volumes:
     - ./init_db_scripts/1init.sql:/docker-entrypoint-initdb.d/1init.sql
     - ./init_db_scripts/2insert.sql:/docker-entrypoint-initdb.d/2insert.sql
+
 #      Below is volume for postgres DB, so we do not need to run init scripts each
 #      time when we do `docker-compose up`.
 #      But for now, we skip it. The reason is - not stable structure of DB.
 #      Please, do not remove empty `pgdata` folder!
 #    - ./pgdata:/var/lib/postgresql/data
-
     environment:
     - DEBUG=false
     - POSTGRES_USER=admin
