@@ -17,6 +17,7 @@ services:
 #      But for now, we skip it. The reason is - not stable structure of DB.
 #      Please, do not remove empty `pgdata` folder!
 #    - ./pgdata:/var/lib/postgresql/data
+
     environment:
     - DEBUG=false
     - POSTGRES_USER=admin
