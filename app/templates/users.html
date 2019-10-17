@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <h1>User : {{ user_name }}</h1>
+    <nav>
+      <ul>
+        <li>
+            <a href="{{ url_for('boards') }}">See Boards</a>
+        </li>
+      </ul>
+    </nav>
+    <hr>
+{% endblock %}

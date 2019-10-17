@@ -4,3 +4,7 @@ itsdangerous==1.1.0
 Jinja2==2.10
 MarkupSafe==1.1.1
 Werkzeug==0.14.1
+psycopg2-binary
+SQLAlchemy
+pytest
+mock==3.0.5

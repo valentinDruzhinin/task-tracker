@@ -4,22 +4,35 @@ services:
     build: .
     ports:
      - "5000:5000"
-  postgres:
-    restart: "always"
-    image: postgres:11-alpine
-    ports:
-    - "5432:5432"
     volumes:
-    - ./init_db_scripts/1init.sql:/docker-entrypoint-initdb.d/1init.sql
-    - ./init_db_scripts/2insert.sql:/docker-entrypoint-initdb.d/2insert.sql
-#      Below is volume for postgres DB, so we do not need to run init scripts each
-#      time when we do `docker-compose up`.
-#      But for now, we skip it. The reason is - not stable structure of DB.
+     - .:/task-tracker
+    depends_on:
+     - postgres_db_container
+    environment:
+     - DEBUG=false
+     - DB_USER=${DB_USER}
+     - DB_PASSWORD=${DB_PASSWORD}
+     - DB_HOST=postgres_db_container
+     - DB_PORT=5432
+  postgres_db_container:
+    restart: "always"
+    image: postgres:11
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init_db_scripts:/docker-entrypoint-initdb.d
 #      Please, do not remove empty `pgdata` folder!
-#    - ./pgdata:/var/lib/postgresql/data
+      - ./pgdata:/var/lib/postgresql/data
+    labels:
+      description: "Postgresql Database"
+      service: "postgresql"
+    networks:
+     - default
 
     environment:
-    - DEBUG=false
-    - POSTGRES_USER=admin
-    - POSTGRES_PASSWORD=mypassword
-    - POSTGRES_DB=task_tracker
+      - DEBUG=false
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME:?DB_NAME not specified}
+volumes:
+  postgres_db_container:

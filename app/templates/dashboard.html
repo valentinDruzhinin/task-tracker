@@ -1,0 +1,23 @@
+{% extends 'users.html' %}
+
+{% block content %}
+    <h1>Board</h1>
+    <table>
+        <thead>
+            <td>Board name</td>
+            <td>Description</td>
+            <td>Created</td>
+            <td>Id of creator</td>
+            <td>See tickets</td>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ board["name"] }}</td>
+                <td>{{ board["description"] }}</td>
+                <td>{{ board["date_of_creation"] }}</td>
+                <td>{{ board["creator_id"] }}</td>
+                <td><a href="{{ url_for('tickets', board_id=board["id"]) }}">open</a></td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
