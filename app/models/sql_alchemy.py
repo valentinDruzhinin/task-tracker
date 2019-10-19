@@ -29,8 +29,8 @@ class DashboardToUser(db.Model):
         nullable=False
     )
 
-    user = db.relationship('User', backref='authorized_dashboards', lazy='dynamic')
-    dashboard = db.relationship('Dashboard', backref='authorized_users', lazy='dynamic')
+    user = db.relationship('User', backref='authorized_dashboards')
+    dashboard = db.relationship('Dashboard', backref='authorized_users')
 
     __table_args__ = (
         db.UniqueConstraint('dashboard_id', 'user_id'),
@@ -49,7 +49,7 @@ class Dashboard(db.Model):
     date_of_creation = db.Column(db.DateTime(), nullable=False, default=datetime.utcnow)
     creator_id = db.Column(db.Integer, db.ForeignKey('Users.id'))
 
-    creator = db.relationship('User', backref='created_dashboards', lazy='dynamic')
+    creator = db.relationship('User', backref='created_dashboards')
 
     def __repr__(self):
         return f'<Dashboard name={self.name} id={self.id}>'
@@ -72,12 +72,11 @@ class Ticket(db.Model):
         default='open'
     )
 
-    creator = db.relationship('User', backref='created_tickets', lazy='dynamic')
-    dashboard = db.relationship('Dashboard', backref='tickets', lazy='dynamic')
+    creator = db.relationship('User', backref='created_tickets', foreign_keys=[creator_id])
+    dashboard = db.relationship('Dashboard', backref='tickets', foreign_keys=[dashboard_id])
 
     __table_args__ = (
         db.CheckConstraint("title <> ''", name='valid_ticket'),
-        db.UniqueConstraint('dashboard_id', 'creator_id')
     )
 
     def __repr__(self):
