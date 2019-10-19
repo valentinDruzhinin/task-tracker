@@ -2,7 +2,7 @@ import app
 import os
 
 
-DEBUG = os.environ.get('DEBUG', True)
+DEBUG = os.environ.get('DEBUG', False)
 app = app.create_app()
 
 
