@@ -9,7 +9,6 @@ services:
     depends_on:
      - postgres_db_container
     environment:
-     - DEBUG=True
      - DB_USER=${DB_USER}
      - DB_PASSWORD=${DB_PASSWORD}
      - DB_HOST=postgres_db_container
