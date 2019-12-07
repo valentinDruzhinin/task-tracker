@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 service nginx start
-uwsgi --ini app.ini
+uwsgi --ini uwsgi.ini
