@@ -11,4 +11,4 @@ RUN apt-get -y install nginx \
     && apt-get -y install build-essential
 RUN pip install -r requirements.txt
 
-ENTRYPOINT ["uwsgi", "uwsgi.ini"]
+ENTRYPOINT ["uwsgi --http-socket :$PORT --home $HOME --ini uwsgi.ini"]
