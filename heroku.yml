@@ -1,8 +1,8 @@
 build:
   docker:
     web: Dockerfile
-    worker: Dockerfile
-#release:
-#  image: worker
-#  command:
-#    - make upgrade
+    worker: Dockerfile-worker
+release:
+  image: worker
+  command:
+    - make upgrade
