@@ -1,10 +1,10 @@
 from graphene import relay
-from .models import Dashboard as DashboardModel
+from app.models import Dashboard
 from graphene_sqlalchemy import SQLAlchemyObjectType
 
 
-class Dashboard(SQLAlchemyObjectType):
+class DashboardNode(SQLAlchemyObjectType):
     """A Dashboard information"""
     class Meta:
-        model = DashboardModel
+        model = Dashboard
         interfaces = (relay.Node, )

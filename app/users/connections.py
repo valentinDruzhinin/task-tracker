@@ -1,8 +1,8 @@
 from graphene import relay
-from .nodes import User
+from .nodes import UserNode
 
 
 class UserConnection(relay.Connection):
     """A User Connection"""
     class Meta:
-        node = User
+        node = UserNode

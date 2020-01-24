@@ -1,10 +1,10 @@
 from graphene import relay
-from .models import User as UserModel
+from app.models import User
 from graphene_sqlalchemy import SQLAlchemyObjectType
 
 
-class User(SQLAlchemyObjectType):
+class UserNode(SQLAlchemyObjectType):
     """A User information"""
     class Meta:
-        model = UserModel
+        model = User
         interfaces = (relay.Node, )

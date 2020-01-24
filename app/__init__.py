@@ -8,18 +8,18 @@ from app.auth import auth
 from app.signer import Signer
 from config import get_config
 from flask_graphql import GraphQLView
+from flask_cors import CORS
 
 
 env = os.getenv('ENVIRONMENT', 'local')
 config = get_config(env)
-db = SQLAlchemy(engine_options={
-    'isolation_level': 'REPEATABLE_READ'
-})
+db = SQLAlchemy(engine_options={'isolation_level': 'REPEATABLE_READ'})
 db.Model.query = db.session.query_property()
 
 
 def create_app():
     app = Flask(__name__)
+    CORS(app)
     app.config.from_object(config)
     db.init_app(app)
     Migrate(app, db)

@@ -1,8 +1,8 @@
 from graphene import relay
-from .nodes import Ticket
+from .nodes import TicketNode
 
 
 class TicketConnection(relay.Connection):
     """A Ticket Connection"""
     class Meta:
-        node = Ticket
+        node = TicketNode
