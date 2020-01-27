@@ -1,4 +1,4 @@
-"""Create Dashboard table
+"""Create DashboardNode table
 
 Revision ID: 08da4446aef6
 Revises: e423983e4fff
