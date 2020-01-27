@@ -63,7 +63,7 @@ class Dashboard(db.Model):
     date_of_creation = db.Column(db.DateTime(), nullable=False, default=datetime.utcnow)
     creator_id = db.Column(db.Integer, db.ForeignKey('Users.id'))
 
-    tickets = db.relationship('Ticket', backref='dashboard', lazy="selectin")
+    tickets = db.relationship('Ticket', backref='dashboard')
 
     def __repr__(self):
         return f'<DashboardNode name={self.name} id={self.id}>'
