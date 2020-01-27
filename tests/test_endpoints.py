@@ -1,8 +1,7 @@
-# import pytest
-# from app.queries import SQLQuery
-# from copy import copy
-#
-#
+def test_pass():
+  pass
+
+
 # @pytest.mark.parametrize('path,result', [
 #     ('/register', '<form method="post" action="/register">'),
 #     ('/login', '<form method="post" action="/login">')
